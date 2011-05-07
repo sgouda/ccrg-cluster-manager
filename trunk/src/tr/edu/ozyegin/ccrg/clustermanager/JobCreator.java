@@ -9,7 +9,7 @@ class JobCreator {
 		}
 		else if (jst.getType().equals("W"))
 			{
-		    return new Job(new WekaScheduler());
+		    return new WekaJob(new WekaScheduler(),(WekaJobSubmissionTransaction)jst);
 			}
 		else
 			return null;
