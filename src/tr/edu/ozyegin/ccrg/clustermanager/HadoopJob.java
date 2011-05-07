@@ -5,33 +5,26 @@ import java.util.UUID;
 
 public class HadoopJob extends Job {
 
-	String filename;
-	int nonZero;
-	int threadCount;
-	UUID uuid;
+	private HadoopJobSubmissionTransaction hJst = null;
 
 	public HadoopJob(Scheduler scheduler,HadoopJobSubmissionTransaction Hjst) {
 		super(scheduler);
-		
+		this.hJst = Hjst;
 	}
-
-	public int getNonZeroElementCount() {
-		return nonZero;
+	public String getJarDir(){
+	  return this.hJst.getJarDir();
 	}
-
-	public int getThreadCount() {
-		return threadCount;
+	public String getDfsInputDir(){
+	  return this.hJst.getDfsInputDir();
 	}
-
-	public void printNonZeroElements() {
-		// System.out.println(nonZero + " from Job Class");
+	public String getDfsOutputDir(){
+	  return this.hJst.getDfsOutputDir();
 	}
-
-	double getMemoryNeed() {
-		// is 0.15 good??? 0.13 seems better
-		// System.out.println("The Memory Need in KBs is "+0.13*this.nonZero);
-		return 0.13 * this.nonZero;
+	public int getMapperCount(){
+	  return this.getMapperCount();
 	}
-
+	public int getReducerCount(){
+	  return this.hJst.getReducercount();
+	}
 }
 
