@@ -10,12 +10,12 @@ public class CalculixJob extends Job {
 	int threadCount;
 	UUID uuid;
 
-	public CalculixJob(Scheduler scheduler, String f_name, int n) {
+	public CalculixJob(Scheduler scheduler, CalculixJobSubmissionTransaction Cjst) {
 		super(scheduler);
 		// TODO Auto-generated constructor stub
-		 filename = f_name;
+		 filename = Cjst.getFileName();
 		uuid = UUID.randomUUID();
-		 nonZero = n;
+		 nonZero = Cjst.getNonZeroElements();
 		if (nonZero <= 1000000) {
 			threadCount = 1;
 		} else if (nonZero > 1000000 && nonZero <= 10000000) {
