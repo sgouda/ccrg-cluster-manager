@@ -10,21 +10,9 @@ public class HadoopJob extends Job {
 	int threadCount;
 	UUID uuid;
 
-	public HadoopJob(Scheduler scheduler, String f_name, int n) {
+	public HadoopJob(Scheduler scheduler,HadoopJobSubmissionTransaction Hjst) {
 		super(scheduler);
-		// TODO Auto-generated constructor stub
-		 filename = f_name;
-		uuid = UUID.randomUUID();
-		 nonZero = n;
-		if (nonZero <= 1000000) {
-			threadCount = 1;
-		} else if (nonZero > 1000000 && nonZero <= 10000000) {
-			threadCount = 2;
-		} else if (nonZero > 10000000 && nonZero <= 100000000) {
-			threadCount = 4;
-		} else if (nonZero > 100000000) {
-			threadCount = 8;
-		}
+		
 	}
 
 	public int getNonZeroElementCount() {
