@@ -8,7 +8,7 @@ public class Test {
 		// TODO Auto-generated method stub
 
 		JobSubmissionTransaction jstC = new CalculixJobSubmissionTransaction("C", "/usr/local", 7);
-		JobSubmissionTransaction jstH = new JobSubmissionTransaction("H");
+		JobSubmissionTransaction jstH = new HadoopJobSubmissionTransaction("H","Try1.jar","In","Out",10,10);
 		JobSubmissionTransaction jstW = new JobSubmissionTransaction("W");
 
 		JobCreator jobcreator = new JobCreator();
