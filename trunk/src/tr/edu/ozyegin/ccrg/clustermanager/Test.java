@@ -9,6 +9,9 @@ public class Test {
 
 		JobSubmissionTransaction jstC = new CalculixJobSubmissionTransaction("C", "/usr/local", 7);
 		JobSubmissionTransaction jstH = new HadoopJobSubmissionTransaction("H","/usr/local/hadoop/Try1.jar","In","Out",10,10);
+		
+		//weka job submission transaction haline getirilecek.
+		//Weka job olusturulcak. 
 		JobSubmissionTransaction jstW = new JobSubmissionTransaction("W");
 
 		JobCreator jobcreator = new JobCreator();

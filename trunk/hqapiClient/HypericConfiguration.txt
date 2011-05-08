@@ -1,0 +1,15 @@
+hyperic ->  http://10.10.40.200:7080/
+userName: hqadmin
+password: hqadmin
+
+
+Hyperic 4.5 Documentation
+http://support.hyperic.com/display/EVO/vFabric+Hyperic+Documentation
+
+Hyperic Web Service api
+http://akanshajain.sys-con.com/node/1523569/mobile
+http://forums.hyperic.com/jiveforums/thread.jspa?threadID=10130&tstart=6&messageID=32256
+
+
+org.eclipse.jdt.core.prefs
+.classpath
