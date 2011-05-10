@@ -12,7 +12,7 @@ public class Test {
 		
 		//weka job submission transaction haline getirilecek.
 		//Weka job olusturulcak. 
-		JobSubmissionTransaction jstW = new JobSubmissionTransaction("W");
+		JobSubmissionTransaction jstW = new WekaJobSubmissionTransaction("W");
 
 		JobCreator jobcreator = new JobCreator();
 		
