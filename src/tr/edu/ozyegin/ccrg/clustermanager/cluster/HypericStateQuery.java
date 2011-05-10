@@ -104,14 +104,20 @@ public final class HypericStateQuery {
 		try {
 			
 			
-			agResponse = agApi.getAgent("10.10.40.101", 2144);
+			agResponse = agApi.getAgent("10.10.40.200", 2144);
 	
 
 		Agent agent = agResponse.getAgent();
 
 		if (resApi!=null){
 
-		ResourcesResponse resp=resApi.getResources(agent, false, false);
+		
+		  
+		  
+		  ResourcesResponse resp=resApi.getResources(agent, false, false);
+		
+		
+		
 
 		List <Resource> resourceList = resp.getResource();
 
