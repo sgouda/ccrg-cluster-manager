@@ -23,7 +23,7 @@ public class ClusterStatus extends Observable {
 	 public void setState(ClusterState newClusterState) { 
 		 this.currentClusterState = newClusterState;
 		 this.setChanged();
-		 this.notifyAll();
+		 //this.notifyAll();
 	 }// end of method setState
 	 
 	 
