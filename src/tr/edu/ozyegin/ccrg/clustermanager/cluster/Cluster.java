@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Observable;
 
 import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterState;
+import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterStatus;
+import tr.edu.ozyegin.ccrg.clustermanager.states.IdleState;
 
 
 //Observable pattern is applied via java.util.Observable 
@@ -13,9 +15,16 @@ public class Cluster extends Observable implements Runnable{
 
 	private List<Node> nodes = null; // the relation is one to many and
 										// aggregation
-	ClusterState state = null;
-
-	public Cluster() {
+	private ClusterStatus status = new ClusterStatus();
+  public ClusterStatus getStatus(){
+    return this.status;
+  }
+  private static Cluster singeletonCluster = null;
+  public static Cluster getSingletonCluster() {
+    if(Cluster.singeletonCluster==null) Cluster.singeletonCluster =  new Cluster();
+    return Cluster.singeletonCluster;
+  }
+  private Cluster() {
 		
 		nodes = new ArrayList<Node>();
 		
@@ -26,6 +35,8 @@ public class Cluster extends Observable implements Runnable{
 		 for (String agentAddress : agentAddressList) {
 		   nodes.add(new Node(agentAddress ));
 		}
+		this.status.setState(IdleState.getSingletonedIdleState());
+		
 		Thread th1 = new Thread(this,"deneme");
 		th1.start();
 
@@ -42,7 +53,7 @@ public class Cluster extends Observable implements Runnable{
 
 	// components should have nodes, not the Clusters.
 	public void getState() {
-
+	  
 	}
 
 	public Node getNode(int _i){
@@ -59,12 +70,14 @@ public class Cluster extends Observable implements Runnable{
   @Override
   public void run() {
     // TODO Auto-generated method stub
-    try {
-      Thread.sleep(30000);
-      this.state.changeState();
-    } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    for(int i = 0 ; i < 4 ; i++){
+      try {
+        Thread.sleep(10000);
+        this.status.changeState();
+      } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     }
   }
 

@@ -64,7 +64,7 @@ public class ClusterTest {
 	@Test
 	public void testCluster() {
 		
-		Cluster cluster = new Cluster();
+		Cluster cluster = Cluster.getSingletonCluster();
 		
 		assertTrue(cluster != null );
 		
@@ -79,7 +79,7 @@ public class ClusterTest {
 	@Test
 	public void testAddNode() {
 		
-		Cluster cluster = new Cluster();
+		Cluster cluster = Cluster.getSingletonCluster();
 
 		Node node1 = new Node("10.10.40.101");
  		
@@ -97,7 +97,7 @@ public class ClusterTest {
 	@Test
 	public void testRemoveNode() {
 		
-		Cluster cluster = new Cluster();
+		Cluster cluster = Cluster.getSingletonCluster();;
 
 		Node node1 = new Node("10.10.40.101");
  		
@@ -118,7 +118,7 @@ public class ClusterTest {
 	public void testGetState() {
 		
 		
-		Cluster cluster = new Cluster();
+		Cluster cluster = Cluster.getSingletonCluster();
 
 		Node node1 = new Node("10.10.40.101");
  		

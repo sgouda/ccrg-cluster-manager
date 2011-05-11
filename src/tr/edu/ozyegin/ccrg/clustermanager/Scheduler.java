@@ -5,9 +5,11 @@ import java.util.Observer;
 import tr.edu.ozyegin.ccrg.clustermanager.cluster.Cluster;
 import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterStatus;
 public class Scheduler implements Observer{
-	Cluster cluster = new Cluster();
-	ClusterStatus status = new ClusterStatus();
+	Cluster cluster = null;
+	ClusterStatus status = null;
 	public Scheduler(){
+	  cluster = Cluster.getSingletonCluster();
+	  status = cluster.getStatus();
 	  this.status.addObserver(this);
 	}
 	void ScheduleAlgorithm(Job j) {
