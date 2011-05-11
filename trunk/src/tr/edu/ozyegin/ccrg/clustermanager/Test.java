@@ -58,12 +58,9 @@ public class Test {
     
     j2 = jobcreator.createJob(jstW3);
     j2.scheduleJob();
-		try {
-      Thread.sleep(40000);
-    } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    Shell shell = Shell.getInstance();
+    shell.getCursor();
+		System.exit(0);
 	}
 
 }
