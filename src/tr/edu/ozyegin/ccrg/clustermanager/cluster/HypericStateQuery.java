@@ -41,16 +41,14 @@ public final class HypericStateQuery {
 	
 	private HypericStateQuery (){
 
-		System.out.println("before connection");
-		
+ 		
 		//TODO
 		//these parameters must be read from the client.properties file
 		// check java almanac http://www.exampledepot.com/egs/java.util/Props.html
 		  hqApi = new HQApi("10.10.40.200", 7080, false, "hqadmin", "hqadmin");
 
 		
-		System.out.println("after connection");
-	}
+ 	}
 	
 	public static synchronized HypericStateQuery getSingletonedHypericStateQuery(){
 		
