@@ -17,9 +17,9 @@ public class Node {
 		IPAddress = _IPAddress;
 		
 	   Memory memory = new Memory(IPAddress);
-	   CPU cpu = new CPU( );
-	   NIC nic = new NIC( );
-	   Storage storage = new Storage();
+	   CPU cpu = new CPU(IPAddress);
+	   NIC nic = new NIC(IPAddress);
+	   Storage storage = new Storage(IPAddress);
 	   
 	   components.add(memory);
 	   components.add(cpu);
