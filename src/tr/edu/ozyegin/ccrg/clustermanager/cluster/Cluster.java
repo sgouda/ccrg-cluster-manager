@@ -9,7 +9,7 @@ import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterState;
 
 
 //Observable pattern is applied via java.util.Observable 
-public class Cluster extends Observable {
+public class Cluster extends Observable implements Runnable{
 
 	private List<Node> nodes = null; // the relation is one to many and
 										// aggregation
@@ -26,19 +26,11 @@ public class Cluster extends Observable {
 		 for (String agentAddress : agentAddressList) {
 		   nodes.add(new Node(agentAddress ));
 		}
-		
+		Thread th1 = new Thread(this,"deneme");
+		th1.start();
 
  
 	} // end of constructor
-	private void stateSimulator(){
-    try {
-     Thread.sleep(30000);
-     this.state.changeState();
-   } catch (InterruptedException e) {
-     // TODO Auto-generated catch block
-     e.printStackTrace();
-   }
-  }
 	public void addNode(Node _node) {
 		getNodes().add(_node);
 	}
@@ -64,5 +56,16 @@ public class Cluster extends Observable {
 	public List<Node> getNodes() {
 		return nodes;
 	}
+  @Override
+  public void run() {
+    // TODO Auto-generated method stub
+    try {
+      Thread.sleep(30000);
+      this.state.changeState();
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
 
 } // end of class Cluster
