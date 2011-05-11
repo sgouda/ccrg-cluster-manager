@@ -15,8 +15,8 @@ public class Memory extends Component {
  
 		 state = new State ();
 		 
-		 state.setStateValue(hypericStateQuery.memoryStatus(this.IPAddress));
-		 
+		 //state.setStateValue(hypericStateQuery.memoryStatus(this.IPAddress));
+		 state.setStateValue(Math.random()*0.75+0.25);
 		return state;
 	}
 	
