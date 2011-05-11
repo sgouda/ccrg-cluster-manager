@@ -8,13 +8,12 @@ public class CalculixScheduler extends Scheduler {
 	public void ScheduleAlgorithm(Job j) {
 		// TODO Auto-generated method stub
 		System.out.println("Implement Calculix Algorithm");
-
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-	  System.out.println("Hadoop update trigerred");
+	  System.out.println("Calculix update trigerred");
 	}
 
 }

@@ -13,7 +13,7 @@ public class WekaScheduler extends Scheduler {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-	  System.out.println("Hadoop update trigerred");
+	  System.out.println("weka update trigerred");
 	}
 
 }

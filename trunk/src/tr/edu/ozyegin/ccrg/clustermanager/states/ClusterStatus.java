@@ -23,20 +23,23 @@ public class ClusterStatus extends Observable {
 	 public void setState(ClusterState newClusterState) { 
 		 this.currentClusterState = newClusterState;
 		 this.setChanged();
-		 //this.notifyAll();
+		 this.notifyObservers();
+		 
+		 
+		 
 	 }// end of method setState
 	 
 	 
-	 public ClusterState getState (){
+	 public ClusterState getState(){
 		 return currentClusterState;
 	 }
 	  
-	 public void changeState (){ // called through the DoorButton when pressed
+	 public void changeState(){ // called through the DoorButton when pressed
 
 		  if( currentClusterState instanceof IdleState )currentClusterState = BusyState.getSingletonedBusyState();   
 		  else if( currentClusterState instanceof BusyState )currentClusterState = IdleState.getSingletonedIdleState();
 		  this.setChanged();
-	    this.notifyAll();
+		  this.notifyObservers();
 	 }
 	 
 	 
