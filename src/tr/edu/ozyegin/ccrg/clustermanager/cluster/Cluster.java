@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
+import tr.edu.ozyegin.ccrg.clustermanager.states.BusyState;
 import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterState;
 import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterStatus;
 import tr.edu.ozyegin.ccrg.clustermanager.states.IdleState;
@@ -52,8 +53,12 @@ public class Cluster extends Observable implements Runnable{
 	}
 
 	// components should have nodes, not the Clusters.
-	public void getState() {
-	  
+	public double getState() {
+	  double load = 0.0;
+	  for(int a =0 ; a < this.nodes.size() ; a++){
+	    load += this.nodes.get(a).getState();
+	  }
+	  return load;
 	}
 
 	public Node getNode(int _i){
@@ -75,8 +80,15 @@ public class Cluster extends Observable implements Runnable{
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////do state decisions here /////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        this.status.changeState();
-        Thread.sleep((int)(Math.random() * 10000 + 1000));
+        
+        Thread.sleep(10000);
+        double state = this.getState();
+        if(state >= 0.5){
+          this.status.setState(BusyState.getSingletonedBusyState());
+        }
+        else{
+          this.status.setState(IdleState.getSingletonedIdleState());
+        }
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();

@@ -3,6 +3,10 @@ package tr.edu.ozyegin.ccrg.clustermanager;
 import java.util.Collections;
 import java.util.Observable;
 
+import tr.edu.ozyegin.ccrg.clustermanager.states.IdleState;
+
+import com.sun.corba.se.spi.orbutil.fsm.State;
+
 public class HadoopScheduler extends Scheduler {
   private static HadoopScheduler scheduler = null;
   private HadoopScheduler(){
@@ -22,15 +26,16 @@ public class HadoopScheduler extends Scheduler {
 	@Override
 	public void update(Observable o, Object arg) {
 	  if(this.isMyTurn()){
-      Job j = null;
-      try{
-        j= this.jobsToSchedule.remove(0);
-        System.out.println("The hadoop job submitted with job ID " + j.getJobID() + " with priority " + j.getPriority() + "\n");
-      }
-      catch(Exception e){
-        System.out.println("There is no job to schedule on hadoop \n");
-      }
-    }
+	    Job j = null;
+	    try{
+	      j= this.jobsToSchedule.remove(0);
+	      //System.out.println("The hadoop job submitted with job ID " + j.getJobID() + " with priority " + j.getPriority() + "\n");
+	    }
+	    catch(Exception e){
+	      //System.out.println("There is no job to schedule on hadoop \n");
+	    }
+	  }
+	  
 	}
 
 }

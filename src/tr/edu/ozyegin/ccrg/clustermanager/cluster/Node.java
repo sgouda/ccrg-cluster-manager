@@ -27,7 +27,13 @@ public class Node {
 	   components.add(storage);
 		
 	} // end of constructor
-
+	public double getState(){
+	  double load = 0.0;
+	  for(int a = 0; a < this.components.size() ; a++){
+	    load += this.components.get(a).getState().getStateValue();
+	  }
+	  return load;
+	}
 	public List<Component> getComponents() {
 		return components;
 	}

@@ -12,7 +12,7 @@ public class NIC extends Component {
 		// TODO Auto-generated method stub
 		
 		state = new State();
- 
+		state.setStateValue(Math.random() * 0.75 + 0.25);
 		return state;
 	}
 

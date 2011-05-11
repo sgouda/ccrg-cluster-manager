@@ -25,10 +25,10 @@ public class CalculixScheduler extends Scheduler {
 		  Job j = null;
 		  try{
 		    j= this.jobsToSchedule.remove(0);
-	      System.out.println("The calculix job submitted with job ID " + j.getJobID() + " with priority " + j.getPriority()+"\n");
+	      //System.out.println("The calculix job submitted with job ID " + j.getJobID() + " with priority " + j.getPriority()+"\n");
 		  }
 		  catch(Exception e){
-		    System.out.println("There is no job to schedule on calculix\n");
+		    //System.out.println("There is no job to schedule on calculix\n");
 		  }
 		}
 	}

@@ -22,11 +22,10 @@ public class ClusterStatus extends Observable {
 	//the DoorState will call this function in order to reset the DoorContext
 	 public void setState(ClusterState newClusterState) { 
 		 this.currentClusterState = newClusterState;
-		 this.setChanged();
-		 this.notifyObservers();
-		 
-		 
-		 
+		 if(this.currentClusterState == IdleState.getSingletonedIdleState()){
+		   this.setChanged();
+	     this.notifyObservers();
+		 }
 	 }// end of method setState
 	 
 	 
@@ -37,9 +36,11 @@ public class ClusterStatus extends Observable {
 	 public void changeState(){ // called through the DoorButton when pressed
 
 		  if( currentClusterState instanceof IdleState )currentClusterState = BusyState.getSingletonedBusyState();   
-		  else if( currentClusterState instanceof BusyState )currentClusterState = IdleState.getSingletonedIdleState();
-		  this.setChanged();
-		  this.notifyObservers();
+		  else if( currentClusterState instanceof BusyState ){
+		    currentClusterState = IdleState.getSingletonedIdleState();
+		    this.setChanged();
+	      this.notifyObservers();
+		  }
 	 }
 	 
 	 
