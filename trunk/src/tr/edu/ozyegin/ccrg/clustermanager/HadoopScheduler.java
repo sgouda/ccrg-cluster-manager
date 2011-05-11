@@ -1,5 +1,8 @@
 package tr.edu.ozyegin.ccrg.clustermanager;
-public class HadoopScheduler implements Scheduler {
+
+import java.util.Observable;
+
+public class HadoopScheduler extends Scheduler {
 
 	@Override
 	public void ScheduleAlgorithm(Job j) {
@@ -8,9 +11,9 @@ public class HadoopScheduler implements Scheduler {
 	}
 
 	@Override
-	public void update() {
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Hadoop update trigerred");
 	}
 
 }

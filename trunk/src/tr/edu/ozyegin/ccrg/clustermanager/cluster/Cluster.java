@@ -5,13 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
+import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterState;
+
 
 //Observable pattern is applied via java.util.Observable 
 public class Cluster extends Observable {
 
 	private List<Node> nodes = null; // the relation is one to many and
 										// aggregation
-	State state = null;
+	ClusterState state = null;
 
 	public Cluster() {
 		
@@ -28,7 +30,15 @@ public class Cluster extends Observable {
 
  
 	} // end of constructor
-
+	private void stateSimulator(){
+    try {
+     Thread.sleep(30000);
+     this.state.changeState();
+   } catch (InterruptedException e) {
+     // TODO Auto-generated catch block
+     e.printStackTrace();
+   }
+  }
 	public void addNode(Node _node) {
 		getNodes().add(_node);
 	}

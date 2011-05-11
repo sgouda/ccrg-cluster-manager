@@ -1,6 +1,8 @@
 package tr.edu.ozyegin.ccrg.clustermanager;
 
-public class WekaScheduler implements Scheduler {
+import java.util.Observable;
+
+public class WekaScheduler extends Scheduler {
 
 	@Override
 	public void ScheduleAlgorithm(Job j) {
@@ -9,9 +11,9 @@ public class WekaScheduler implements Scheduler {
 	}
 
 	@Override
-	public void update() {
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+	  System.out.println("Hadoop update trigerred");
 	}
 
 }
