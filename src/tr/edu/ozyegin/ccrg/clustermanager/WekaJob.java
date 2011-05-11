@@ -1,11 +1,16 @@
 package tr.edu.ozyegin.ccrg.clustermanager;
-import java.io.File;
-import java.util.Comparator;
-import java.util.UUID;
 
 public class WekaJob extends Job {
 
 	private WekaJobSubmissionTransaction wJst = null;
+
+	public WekaJobSubmissionTransaction getwJst() {
+		return wJst;
+	}
+
+	public void setwJst(WekaJobSubmissionTransaction wJst) {
+		this.wJst = wJst;
+	}
 
 	public WekaJob(Scheduler scheduler,WekaJobSubmissionTransaction Wjst) {
 		super(scheduler,Wjst.getPriority());
