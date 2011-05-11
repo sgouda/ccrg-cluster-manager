@@ -2,10 +2,11 @@ package tr.edu.ozyegin.ccrg.clustermanager.cluster;
 
 public class Memory extends Component {
 
-	String iPAddress="";
+
+	
 	public Memory(String _iPAddress) {
 		// TODO Auto-generated constructor stub
-		iPAddress=_iPAddress;
+		super(_iPAddress);
 	}
 
 	@Override
@@ -14,7 +15,7 @@ public class Memory extends Component {
  
 		 state = new State ();
 		 
-		 state.setStateValue(hypericStateQuery.memoryStatus(iPAddress));
+		 state.setStateValue(hypericStateQuery.memoryStatus(this.IPAddress));
 		 
 		return state;
 	}
