@@ -11,7 +11,7 @@ public class CalculixJob extends Job {
 	UUID uuid;
 
 	public CalculixJob(Scheduler scheduler, CalculixJobSubmissionTransaction Cjst) {
-		super(scheduler);
+		super(scheduler,Cjst.getPriority());
 		// TODO Auto-generated constructor stub
 		 filename = Cjst.getFileName();
 		uuid = UUID.randomUUID();

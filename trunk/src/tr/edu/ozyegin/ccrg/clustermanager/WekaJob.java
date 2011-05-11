@@ -8,7 +8,7 @@ public class WekaJob extends Job {
 	private WekaJobSubmissionTransaction wJst = null;
 
 	public WekaJob(Scheduler scheduler,WekaJobSubmissionTransaction Wjst) {
-		super(scheduler);
+		super(scheduler,Wjst.getPriority());
 		this.wJst = Wjst;
 	}
 

@@ -70,9 +70,12 @@ public class Cluster extends Observable implements Runnable{
   @Override
   public void run() {
     // TODO Auto-generated method stub
-    for(int i = 0 ; i < 4 ; i++){
+    for(;;){
       try {
-        Thread.sleep(10000);
+        Thread.sleep(1000);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////do state decisions here /////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
         this.status.changeState();
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block
