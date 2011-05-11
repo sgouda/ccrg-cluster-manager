@@ -10,17 +10,17 @@ public class Test {
 		JobSubmissionTransaction jstC = new CalculixJobSubmissionTransaction("C", "/usr/local", 7,5);
 		JobSubmissionTransaction jstH = new HadoopJobSubmissionTransaction("H","/usr/local/hadoop/Try1.jar","In","Out",10,10,4);
 		
-		JobSubmissionTransaction jstW = new WekaJobSubmissionTransaction("W",6);
+		JobSubmissionTransaction jstW = new WekaJobSubmissionTransaction("W", "weka.classifiers.trees.J48", "/home/ilke/weka/data/weather.arff" ,6);
 		
 		JobSubmissionTransaction jstC2 = new CalculixJobSubmissionTransaction("C", "/usr/local", 7,3);
     JobSubmissionTransaction jstH2 = new HadoopJobSubmissionTransaction("H","/usr/local/hadoop/Try1.jar","In","Out",10,10,1);
     
-    JobSubmissionTransaction jstW2 = new WekaJobSubmissionTransaction("W",5);
+    JobSubmissionTransaction jstW2 = new WekaJobSubmissionTransaction("W", "weka.classifiers.trees.J48", "/home/ilke/weka/data/weather.arff", 5);
     
     JobSubmissionTransaction jstC3 = new CalculixJobSubmissionTransaction("C", "/usr/local", 7,10);
     JobSubmissionTransaction jstH3 = new HadoopJobSubmissionTransaction("H","/usr/local/hadoop/Try1.jar","In","Out",10,10,2);
     
-    JobSubmissionTransaction jstW3 = new WekaJobSubmissionTransaction("W",1);
+    JobSubmissionTransaction jstW3 = new WekaJobSubmissionTransaction("W", "weka.classifiers.trees.J48", "/home/ilke/weka/data/weather.arff",1);
 
 		JobCreator jobcreator = new JobCreator();
 		
