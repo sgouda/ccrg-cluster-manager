@@ -4,8 +4,8 @@ public class CalculixJobSubmissionTransaction extends JobSubmissionTransaction {
 	String filename;
 	int nonzero;
 
-	public CalculixJobSubmissionTransaction(String string, String s, int i) {
-		super(string);
+	public CalculixJobSubmissionTransaction(String string, String s, int i, int priority) {
+		super(string, priority);
 		filename = s;
 		nonzero = i;
 		// TODO Auto-generated constructor stub

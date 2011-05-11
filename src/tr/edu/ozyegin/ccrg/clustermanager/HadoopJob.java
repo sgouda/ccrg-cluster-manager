@@ -8,7 +8,7 @@ public class HadoopJob extends Job {
 	private HadoopJobSubmissionTransaction hJst = null;
 
 	public HadoopJob(Scheduler scheduler,HadoopJobSubmissionTransaction Hjst) {
-		super(scheduler);
+		super(scheduler,Hjst.getPriority());
 		this.hJst = Hjst;
 	}
 	public String getJarDir(){

@@ -2,7 +2,7 @@ package tr.edu.ozyegin.ccrg.clustermanager;
 public class WekaJobSubmissionTransaction extends JobSubmissionTransaction {
 
 
-	public WekaJobSubmissionTransaction(final String string) {
-		super(string);
+	public WekaJobSubmissionTransaction(final String string, final int priority) {
+		super(string,priority);
 	}
 }

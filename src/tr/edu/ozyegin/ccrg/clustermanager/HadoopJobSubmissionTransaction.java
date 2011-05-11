@@ -7,8 +7,8 @@ public class HadoopJobSubmissionTransaction extends JobSubmissionTransaction {
 	private String dfsInputDir = "";
 	private String dfsOutputDir = "";
 
-	public HadoopJobSubmissionTransaction(final String string, final String jarDir, final String dfsInputDir, final String dfsOutputDir, final int mapperCount, final int reducerCount ) {
-		super(string);
+	public HadoopJobSubmissionTransaction(final String string, final String jarDir, final String dfsInputDir, final String dfsOutputDir, final int mapperCount, final int reducerCount ,final int priority) {
+		super(string,priority);
 		this.jarDir = jarDir;
 		this.dfsInputDir = dfsInputDir;
 		this.dfsOutputDir = dfsOutputDir;
