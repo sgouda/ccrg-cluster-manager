@@ -1,5 +1,6 @@
 package tr.edu.ozyegin.ccrg.clustermanager;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
 
@@ -11,6 +12,17 @@ import com.sun.corba.se.spi.orbutil.fsm.State;
 public class HadoopScheduler extends Scheduler {
   private static HadoopScheduler scheduler = null;
   private HadoopScheduler(){
+  }
+  protected static ArrayList<Job> jobsToSchedule = new ArrayList<Job>();
+  public static String getQueueString(){
+    String result = "";
+    int a = 0;
+    while( a < jobsToSchedule.size()){
+      result +=jobsToSchedule.toString() + "\n";
+      a++;
+    }
+    if(a == 0)return "There is no job in the queue";
+    return result;
   }
   public static HadoopScheduler getScheduler(){
     if(HadoopScheduler.scheduler == null)HadoopScheduler.scheduler = new HadoopScheduler();

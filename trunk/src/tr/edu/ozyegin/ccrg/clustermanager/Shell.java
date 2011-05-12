@@ -27,8 +27,7 @@ public class Shell {
       System.out.print(Shell.shellString);
       try {
         String line = in.readLine();
-        result = this.clusterInterface.protocolExecuter(line);
-        if(result == -1)break;
+        this.clusterInterface.protocolExecuter(line);
       } catch (IOException e) {
         // TODO Auto-generated catch block
         System.out.println("Error reading stream");

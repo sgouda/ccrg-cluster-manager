@@ -5,14 +5,14 @@ import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterStatus;
 
 public class ClusterInterface {
   private static JobCreator jobcreator = null;
-  public int protocolExecuter(String line){
+  public void protocolExecuter(String line){
     String [] tokens = line.split(" ");
     try{
       if(tokens[0].equals("Create") || tokens[0].equals("create")){
         if(tokens[1].equals("Hadoop") || tokens[1].equals("hadoop")){
           if(tokens.length - 2 < 6){
             System.out.println("Invalid Hadoop Job\nUsage: Create Hadoop <path to jar> <input dir> <output dir> <mapper count> <reducer count> <priority>");
-            return 1;
+            return ;
           }
           try{
             int mapperCount = Integer.parseInt(tokens[5]);
@@ -31,7 +31,7 @@ public class ClusterInterface {
         else if(tokens[1].equals("Weka") || tokens[1].equals("weka")){
           if(tokens.length - 2 < 3){
             System.out.println("Invalid Weka Job\nUsage: Create Weka <algorithm> <data file> <priority>");
-            return 1;
+            return;
           }
           try{
             int priority = Integer.parseInt(tokens[4]);
@@ -48,7 +48,7 @@ public class ClusterInterface {
         else if(tokens[1].equals("Calculix") || tokens[1].equals("calculix")){
           if(tokens.length - 2 < 3){
             System.out.println("Invalid Calculix Job\nUsage: Create Calculix <data file> <nonzero elements> <priority>");
-            return 1;
+            return;
           }
           try{
             int priority = Integer.parseInt(tokens[4]);
@@ -62,12 +62,11 @@ public class ClusterInterface {
             System.out.println("Error: Invalid arguments ");
           }
         }
-        return 1;
       }
       else if(tokens[0].equals("Show") || tokens[0].equals("show")){
         if(tokens.length<2){
           System.out.println("Invalid Show command\nUsage: Show <Running | Status | Weka | Calculix | Hadoop>");
-          return 2;
+          return;
         }
         if(tokens[1].equals("Status") || tokens[1].equals("status")){
           System.out.println("Cluster is in "+ClusterStatus.getStateString()+" state");
@@ -84,26 +83,20 @@ public class ClusterInterface {
         else{
           System.out.println("Invalid Show command\nUsage: Show <Running | Status | Weka | Calculix | Hadoop>");
         }
-       
-        return 2;
       }
       else if (tokens[0].equals("Help") || tokens[0].equals("help")){
         System.out.println("\"Create <Job Type> [arguments] <priority>\"\nEx: Create Hadoop /usr/local/test.jar In Out 10 10 1");
         System.out.println("\"Show <PoI>\"\nEx: Show memory");
         System.out.println("\"Exit\" to exit from the application");
         System.out.println("\"Help\" to show list of commands");
-        
-        return 3;
       }
-      else if(tokens[0].equals("Exit") || tokens[0].equals("exit"))return -1;
+      else if(tokens[0].equals("Exit") || tokens[0].equals("exit"))System.exit(0);
       else{
         System.out.println("Unknown command \""+tokens[0]+"\" !...");
-        return 0;
       }
     }
     catch(NullPointerException e){
       System.out.println("Unknown command!...");
-      return 0;
     }
   }
 }

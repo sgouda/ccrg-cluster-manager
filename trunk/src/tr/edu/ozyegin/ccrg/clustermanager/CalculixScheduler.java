@@ -1,5 +1,6 @@
 package tr.edu.ozyegin.ccrg.clustermanager;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
 
@@ -12,6 +13,17 @@ public class CalculixScheduler extends Scheduler {
   public static CalculixScheduler getScheduler(){
     if(CalculixScheduler.scheduler == null)CalculixScheduler.scheduler = new CalculixScheduler();
     return CalculixScheduler.scheduler;
+  }
+  protected static ArrayList<Job> jobsToSchedule = new ArrayList<Job>();
+  public static String getQueueString(){
+    String result = "";
+    int a = 0;
+    while( a < jobsToSchedule.size()){
+      result +=jobsToSchedule.toString() + "\n";
+      a++;
+    }
+    if(a == 0)return "There is no job in the queue";
+    return result;
   }
 	@Override
 	public void ScheduleAlgorithm(Job j) {
