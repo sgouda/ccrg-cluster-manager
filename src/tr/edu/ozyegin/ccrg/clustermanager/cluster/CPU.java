@@ -12,7 +12,7 @@ public class CPU extends Component {
 		// TODO Auto-generated method stub
 		
 		state = new State ();
-		
+		state.setStateValue(Math.random());
 		return state;
 	}
 

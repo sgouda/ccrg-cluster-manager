@@ -17,6 +17,13 @@ public class Cluster extends Observable implements Runnable{
 	private List<Node> nodes = null; // the relation is one to many and
 										// aggregation
 	private ClusterStatus status = new ClusterStatus();
+	private static String running = "";
+	public static String setRunningString(String str){
+	  return running = str;
+	}
+	public static String getRunningString(){
+	  return "Currently  running : "+running;
+	}
   public ClusterStatus getStatus(){
     return this.status;
   }
@@ -28,7 +35,10 @@ public class Cluster extends Observable implements Runnable{
   private Cluster() {
 		
 		nodes = new ArrayList<Node>();
-		
+		//////////////////////////////////////////////////////////////////////////////////
+		///////creating fake cluster//////////////////////////////////////////////////////
+		for(int a = 0; a < 10; a++) this.nodes.add(new Node("10.10.40.200"));
+		//////////////////////////////////////////////////////////////////////////////////
 		HypericStateQuery hypericStateQuery = HypericStateQuery.getSingletonedHypericStateQuery();
 		
 		List<String> agentAddressList = hypericStateQuery.agentApi();
@@ -38,7 +48,7 @@ public class Cluster extends Observable implements Runnable{
 		}
 		this.status.setState(IdleState.getSingletonedIdleState());
 		
-		Thread th1 = new Thread(this,"deneme");
+		Thread th1 = new Thread(this,"sniffer thread");
 		th1.start();
 
  
@@ -58,7 +68,7 @@ public class Cluster extends Observable implements Runnable{
 	  for(int a =0 ; a < this.nodes.size() ; a++){
 	    load += this.nodes.get(a).getState();
 	  }
-	  return load;
+	  return load / (double)this.nodes.size();
 	}
 
 	public Node getNode(int _i){
@@ -83,12 +93,10 @@ public class Cluster extends Observable implements Runnable{
         
         Thread.sleep(10000);
         double state = this.getState();
-        if(state >= 0.5){
-          this.status.setState(BusyState.getSingletonedBusyState());
-        }
-        else{
-          this.status.setState(IdleState.getSingletonedIdleState());
-        }
+        
+        if(state >= 0.5) this.status.setState(BusyState.getSingletonedBusyState());
+        else this.status.setState(IdleState.getSingletonedIdleState());
+        
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();

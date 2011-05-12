@@ -32,7 +32,7 @@ public class Node {
 	  for(int a = 0; a < this.components.size() ; a++){
 	    load += this.components.get(a).getState().getStateValue();
 	  }
-	  return load;
+	  return load / (double)this.components.size();
 	}
 	public List<Component> getComponents() {
 		return components;
