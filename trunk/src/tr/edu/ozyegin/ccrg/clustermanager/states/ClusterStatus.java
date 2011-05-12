@@ -12,8 +12,15 @@ import java.util.Observable;
  */
 public class ClusterStatus extends Observable {
 
-		private ClusterState currentClusterState;
-		
+	 private static ClusterState currentClusterState = IdleState.getSingletonedIdleState();
+	 public static String getStateString(){
+	   if(currentClusterState == IdleState.getSingletonedIdleState()){
+	     return "Idle";
+	   }
+	   else{
+	     return "Busy";
+	   }
+	 }
 	 public ClusterStatus(){
 		 // initialize the door to be at the closed state 
 		 setState(IdleState.getSingletonedIdleState());

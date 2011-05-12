@@ -28,4 +28,8 @@ class Job implements Comparable{
     if(this.priority == tmp.priority) return 0;
     return 1;
   }
+  @Override
+  public String toString(){
+    return "Job with ID " + this.jobID+" and priority "+this.priority;
+  }
 }

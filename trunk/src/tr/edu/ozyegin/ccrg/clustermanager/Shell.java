@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import tr.edu.ozyegin.ccrg.clustermanager.cluster.Cluster;
+import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterStatus;
+
 public class Shell {
   private Shell(){
     Shell.jobcreator = new JobCreator();
@@ -90,11 +93,30 @@ public class Shell {
           catch(Exception e){
             System.out.println("Error: Invalid arguments ");
           }
-          
         }
         return 1;
       }
       else if(tokens[0].equals("Show") || tokens[0].equals("show")){
+        if(tokens.length<2){
+          System.out.println("Invalid Show command\nUsage: Show <Running | Status | Weka | Calculix | Hadoop>");
+          return 2;
+        }
+        if(tokens[1].equals("Status") || tokens[1].equals("status")){
+          System.out.println("Cluster is in "+ClusterStatus.getStateString()+" state");
+          
+        }
+        else if(tokens[1].equals("Hadoop") || tokens[1].equals("hadoop"))System.out.println(HadoopScheduler.getQueueString());
+        else if(tokens[1].equals("Calculix") || tokens[1].equals("calculix"))System.out.println(CalculixScheduler.getQueueString());
+        else if(tokens[1].equals("Weka") || tokens[1].equals("weka"))System.out.println(WekaScheduler.getQueueString());
+        else if(tokens[1].equals("Running") || tokens[1].equals("running")){
+          String current = Cluster.getRunningString();
+          if(current.length() == "Currently  running : ".length())System.out.println("Currently no job is running");
+          else System.out.println(current);
+        }
+        else{
+          System.out.println("Invalid Show command\nUsage: Show <Running | Status | Weka | Calculix | Hadoop>");
+        }
+       
         return 2;
       }
       else if (tokens[0].equals("Help") || tokens[0].equals("help")){

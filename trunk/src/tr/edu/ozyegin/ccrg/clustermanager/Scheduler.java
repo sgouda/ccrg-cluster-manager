@@ -8,12 +8,21 @@ import tr.edu.ozyegin.ccrg.clustermanager.states.ClusterStatus;
 public class Scheduler implements Observer{
 	Cluster cluster = null;
 	ClusterStatus status = null;
-	protected ArrayList<Job> jobsToSchedule = new ArrayList<Job>();
+	protected static ArrayList<Job> jobsToSchedule = new ArrayList<Job>();
 	protected static int round = 0;
 	protected static int noOfInstances = 0;
 	protected int myInstanceID = Scheduler.noOfInstances;
 	protected static short roundCounter = 0;
-
+  public static String getQueueString(){
+    String result = "";
+    int a = 0;
+    while( a < jobsToSchedule.size()){
+      result +=jobsToSchedule.toString() + "\n";
+      a++;
+    }
+    if(a == 0)return "There is no job in the queue";
+    return result;
+  }
 	public Scheduler(){
 	  cluster = Cluster.getSingletonCluster();
 	  status = cluster.getStatus();
