@@ -19,7 +19,15 @@ public class MainMethod {
 		
 	  HypericStateQuery hypericStateQueryInstance = HypericStateQuery.getSingletonedHypericStateQuery();
 		
-     hypericStateQueryInstance.memoryStatus();
+	  List <String> agentList = hypericStateQueryInstance.agentApi();
+	  
+	  for (String agentAddress : agentList) {
+		
+		  hypericStateQueryInstance.memoryStatus(agentAddress);
+		  
+	}
+	  
+    
 	  
 		System.out.println(" +++++++++++ agentList "  );
 
