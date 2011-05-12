@@ -1,5 +1,6 @@
 package tr.edu.ozyegin.ccrg.clustermanager;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
 
@@ -9,6 +10,17 @@ import tr.edu.ozyegin.ccrg.clustermanager.states.IdleState;
 public class WekaScheduler extends Scheduler {
   private static WekaScheduler scheduler = null;
   private WekaScheduler(){
+  }
+  protected static ArrayList<Job> jobsToSchedule = new ArrayList<Job>();
+  public static String getQueueString(){
+    String result = "";
+    int a = 0;
+    while( a < jobsToSchedule.size()){
+      result +=jobsToSchedule.toString() + "\n";
+      a++;
+    }
+    if(a == 0)return "There is no job in the queue";
+    return result;
   }
   public static WekaScheduler getScheduler(){
     if(WekaScheduler.scheduler == null)WekaScheduler.scheduler = new WekaScheduler();
